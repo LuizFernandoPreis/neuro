@@ -66,7 +66,7 @@ export default function Texts(): JSX.Element {
 
   return (
     <>
-      <h1 className="text-center mb-4">Técnicas de Relaxamento e Concentração</h1>
+      <h1 className="text-center mb-4"><b> Técnicas de Relaxamento e Concentração</b></h1>
       <div className="flex justify-center items-center mb-4">
         <div className="w-full md:w-1/2 p-4">
           <div className="bg-white shadow-md rounded-lg h-100 p-4 flex justify-center items-center">

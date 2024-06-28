@@ -51,10 +51,8 @@ export default function GetTask(): JSX.Element {
       }
   
       const updatedTask = await response.json();
-      console.log('Status atualizado:', updatedTask);
       const newTasks = [...tasks];
       newTasks[task.id - 1] = updatedTask;
-      alert(JSON.stringify(newTasks[task.id - 1]))
       setTasks(newTasks)
     } catch (error) {
       console.error('Erro ao atualizar status da tarefa:', error);
@@ -68,21 +66,23 @@ export default function GetTask(): JSX.Element {
       <div className="text-center">
         <h1 className="text-2xl font-bold mb-4">Lista de Tarefas</h1>
       </div>
-      <ul className="bg-white shadow-md rounded-lg p-4">
-        {tasks.map(task => (
-          <li key={task.id} className="list-group-item flex items-center justify-between">
-            <div>
-              <input
-                type="checkbox"
-                checked={task.status === 'concluido'}
-                onChange={(e) => handleStatusChange(task, e.target.checked)}
-                className="mr-2 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <span>{task.nome} - {task.descricao}, {task.data}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <div className="flex justify-center">
+        <ul className="bg-white shadow-md rounded-lg p-4 h-[90%] w-[90%]">
+          {tasks.map(task => (
+            <li key={task.id} className="list-group-item flex items-center justify-between">
+              <div>
+                <input
+                  type="checkbox"
+                  checked={task.status === 'concluido'}
+                  onChange={(e) => handleStatusChange(task, e.target.checked)}
+                  className="mr-2 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                />
+                <span>{task.nome} - {task.descricao}, {task.data}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
