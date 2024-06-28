@@ -64,7 +64,7 @@ const Navbar = () => {
               Ver Tarefas
             </a>
             <a
-              href="calendar.html"
+              href="/calendario"
               className="block lg:inline-block text-gray-300 hover:text-white mt-4 lg:mt-0 px-4 py-2"
             >
               Meu Calendário
