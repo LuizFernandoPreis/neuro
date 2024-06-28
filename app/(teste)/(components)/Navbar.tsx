@@ -12,7 +12,7 @@ const Navbar = () => {
     <header>
       <nav className="bg-gray-900 p-4">
         <div className="container mx-auto flex items-center justify-between relative">
-          <a href="/teste" className="flex items-center text-white">
+          <a href="/" className="flex items-center text-white">
             <img src="/logo.webp" alt="Logo" className="h-8 mr-2" />
             NeuroNavigator
           </a>
@@ -46,19 +46,19 @@ const Navbar = () => {
             id="navbarNav"
           >
             <a
-              href="/teste"
+              href="/"
               className="block lg:inline-block text-gray-300 hover:text-white mt-4 lg:mt-0 px-4 py-2"
             >
               Página Principal
             </a>
             <a
-              href="/teste/cadtask"
+              href="/cadtask"
               className="block lg:inline-block text-gray-300 hover:text-white mt-4 lg:mt-0 px-4 py-2"
             >
               Cadastrar Tarefa
             </a>
             <a
-              href="/teste/getTask"
+              href="/getTask"
               className="block lg:inline-block text-gray-300 hover:text-white mt-4 lg:mt-0 px-4 py-2"
             >
               Ver Tarefas
