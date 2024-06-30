@@ -1,5 +1,5 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <header>
+    <>
       <nav className="bg-gray-900 p-4">
         <div className="container mx-auto flex items-center justify-between relative">
           <a href="/" className="flex items-center text-white">
@@ -21,7 +21,7 @@ const Navbar = () => {
             className="text-white lg:hidden"
             type="button"
             aria-controls="navbarNav"
-            aria-expanded={isOpen ? 'true' : 'false'}
+            aria-expanded={isOpen ? "true" : "false"}
             aria-label="Toggle navigation"
           >
             <svg
@@ -41,7 +41,7 @@ const Navbar = () => {
           </button>
           <div
             className={`lg:flex lg:flex-row-reverse lg:items-center lg:space-x-4 absolute bg-gray-900 lg:relative right-0 top-full z-10 mt-2 w-full origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
-              isOpen ? 'block' : 'hidden'
+              isOpen ? "block" : "hidden"
             }`}
             id="navbarNav"
           >
@@ -72,7 +72,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </header>
+    </>
   );
 };
 
