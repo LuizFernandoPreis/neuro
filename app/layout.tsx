@@ -17,7 +17,10 @@ export default function RootLayout({
   const cookies = parseCookies();
   const token = cookies.token;
 
-  const pathname = window.location.pathname;
+  var pathname;
+  useEffect(() => {
+    pathname = window.location.pathname;
+  });
   if (!token && pathname !== "/login" && pathname !== "/cadUsuario") {
     router.push("/cadUsuario");
   }
