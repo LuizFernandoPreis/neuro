@@ -2,9 +2,15 @@
 import Navbar from "./(components)/Navbar";
 import Principal from "./(components)/Home";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 export default function Home() {
-  useEffect(() => {});
+  const [carregou, carregar] = useState(false);
+  const router = useRouter();
+
+  if (!carregou) {
+    carregar(true);
+    router.refresh();
+  }
 
   return (
     <>

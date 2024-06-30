@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -25,7 +26,9 @@ export default function Home() {
         );
 
         const dataResponse = await response.json();
-        alert("Usuário cadastrado com sucesso!");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const router = useRouter();
+        router.push("/login");
         console.log(dataResponse);
       } catch (error) {
         console.error("Erro ao cadastrar o usuário:", error);

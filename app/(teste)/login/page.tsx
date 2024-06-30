@@ -96,6 +96,9 @@ export default function Login() {
               >
                 Login
               </button>
+              <a href="/cadUsuario" className="text-blue-500">
+                Cadastre-se
+              </a>
             </div>
           </form>
         </div>

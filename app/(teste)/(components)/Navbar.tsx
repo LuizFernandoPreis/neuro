@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
-
+import { destroyCookie } from "nookies";
+import { useRouter } from "next/router";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -68,6 +69,15 @@ const Navbar = () => {
               className="block lg:inline-block text-gray-300 hover:text-white mt-4 lg:mt-0 px-4 py-2"
             >
               Meu Calendário
+            </a>
+            <a
+              href="/login"
+              onClick={() => {
+                destroyCookie(null, "token");
+              }}
+              className="block lg:inline-block text-gray-300 hover:text-white mt-4 lg:mt-0 px-4 py-2"
+            >
+              Deslogar
             </a>
           </div>
         </div>
