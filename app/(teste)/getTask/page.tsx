@@ -29,7 +29,6 @@ export default function GetTask(): JSX.Element {
           }
         );
         const tasksData: Task[] = await response.json();
-        alert(tasksData);
         setTasks(tasksData);
       } catch (error) {
         console.error("Erro ao buscar as tarefas:", error);
