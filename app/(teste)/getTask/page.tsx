@@ -62,7 +62,7 @@ export default function GetTask(): JSX.Element {
   
 
   return (
-    <div className="container mt-5">
+    <div className="container mx-auto mt-5">
       <div className="text-center">
         <h1 className="text-2xl font-bold mb-4">Lista de Tarefas</h1>
       </div>
