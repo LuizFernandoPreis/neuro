@@ -13,27 +13,24 @@ export default function Home() {
         .value;
       const senha = (document.getElementById("senha") as HTMLInputElement)
         .value;
-      try {
-        const response = await fetch(
-          "https://www.neuronavigator.x10.mx/php/createUser.php",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ nome, email, senha }),
-          }
-        );
 
-        const dataResponse = await response.json();
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const router = useRouter();
-        router.push("/login");
-        console.log(dataResponse);
-      } catch (error) {
-        console.error("Erro ao cadastrar o usuário:", error);
-        alert("Erro ao cadastrar o usuário");
-      }
+      const response = await fetch(
+        "https://www.neuronavigator.x10.mx/php/createUser.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nome, email, senha }),
+        }
+      );
+
+      const dataResponse = await response.json();
+      console.log(dataResponse);
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const router = useRouter();
+      router.push("/login");
+      console.log(dataResponse);
     };
 
     form?.addEventListener("submit", handleSubmit);
