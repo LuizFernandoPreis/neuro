@@ -9,15 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.18.0",
     "@types/express": "^4.17.21",
     "chart.js": "^4.4.3",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.10.1",
     "next": "14.2.4",
     "nookies": "^2.5.2",
+    "openssl": "^2.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@types/mysql": "^2.15.26",
@@ -28,6 +32,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
+    "prisma": "^5.18.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

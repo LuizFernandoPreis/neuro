@@ -17,14 +17,14 @@ export default function Login() {
         .value;
       try {
         const response = await fetch(
-          "https://www.neuronavigator.x10.mx/php/getUser.php",
+          "https://c5fa41fd-e191-4b09-b021-0a2ca3cb6e42-00-fps6efufc4y5.janeway.replit.dev/api/login",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ email, senha }),
-          }
+          },
         );
 
         if (!response.ok) {
@@ -32,8 +32,8 @@ export default function Login() {
         }
 
         const dataResponse = await response.json();
+        console.log(dataResponse);
 
-        // Defina o cookie
         await setCookie(null, "token", dataResponse.user.id, {
           maxAge: 30 * 24 * 60 * 60,
           path: "/",

@@ -1,10 +1,14 @@
 "use client";
-import { useRouter } from "next/router";
+
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter();
+
   useEffect(() => {
     const form = document.getElementById("userForm");
+
     const handleSubmit = async (event: Event) => {
       event.preventDefault();
 
@@ -13,23 +17,24 @@ export default function Home() {
         .value;
       const senha = (document.getElementById("senha") as HTMLInputElement)
         .value;
+
       try {
         const response = await fetch(
-          "https://www.neuronavigator.x10.mx/php/createUser.php",
+          "https://c5fa41fd-e191-4b09-b021-0a2ca3cb6e42-00-fps6efufc4y5.janeway.replit.dev/api/signup",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ nome, email, senha }),
-          }
+          },
         );
 
         const dataResponse = await response.json();
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const router = useRouter();
-        router.push("/login");
         console.log(dataResponse);
+
+        // Navegar para a página de login
+        router.push("/login");
       } catch (error) {
         console.error("Erro ao cadastrar o usuário:", error);
         alert("Erro ao cadastrar o usuário");
@@ -41,11 +46,12 @@ export default function Home() {
     return () => {
       form?.removeEventListener("submit", handleSubmit);
     };
-  }, []);
+  }, [router]); // Dependência de `router` para garantir que a referência seja atualizada
+
   return (
     <>
       <div className="flex justify-center h-screen">
-        <div className="bg-white bg-opacity-50 p-8 rounded-lg  md:shadow-lg w-full md:my-auto max-w-2xl">
+        <div className="bg-white bg-opacity-50 p-8 rounded-lg md:shadow-lg w-full md:my-auto max-w-2xl">
           <h2 className="text-2xl font-bold mb-6 text-center">Cadastro</h2>
           <form id="userForm">
             <div className="mb-4">
@@ -61,7 +67,7 @@ export default function Home() {
                 name="nome"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Digite seu nome"
-              ></input>
+              />
             </div>
             <div className="mb-4">
               <label
@@ -76,7 +82,7 @@ export default function Home() {
                 name="email"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Digite seu email"
-              ></input>
+              />
             </div>
             <div className="mb-6">
               <label
@@ -91,7 +97,7 @@ export default function Home() {
                 name="senha"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Digite sua senha"
-              ></input>
+              />
             </div>
             <div className="flex items-center justify-between">
               <button
