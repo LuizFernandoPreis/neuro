@@ -17,7 +17,7 @@ const Footer = () => {
           </a>
           <a href="https://twitter.com" className="text-gray-300 hover:text-white">
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6" 
               fill="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +52,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    
   );
 };
 
