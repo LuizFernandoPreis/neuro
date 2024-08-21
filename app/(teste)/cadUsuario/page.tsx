@@ -20,7 +20,7 @@ export default function Home() {
 
       try {
         const response = await fetch(
-          "https://c5fa41fd-e191-4b09-b021-0a2ca3cb6e42-00-fps6efufc4y5.janeway.replit.dev/api/signup",
+          "http://localhost:3000/api/signup",
           {
             method: "POST",
             headers: {

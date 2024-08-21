@@ -7,7 +7,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-5 ml-[7.5%]">
         <Texts/>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-[1rem]">

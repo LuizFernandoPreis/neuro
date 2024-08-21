@@ -1,7 +1,6 @@
-// app/api/test/route.ts
 import Cors from "cors";
 import { NextResponse, NextRequest } from "next/server";
-import User from "../../models/user";
+import Task from "../../models/Task";
 import prisma from "../../lib/prisma";
 
 const cors = Cors({
@@ -9,15 +8,16 @@ const cors = Cors({
   origin: "*",
 });
 
-let users: User[] = [];
 
 export async function POST(request: NextRequest) {
-  const data = await request.json();
-  const {nome, email, senha} = data;
-  console.log(data)
-  const response = await prisma.user.create({data:{
-    nome, email, senha
+  const req = await request.json();
+  const {nome, descricao, status, data, userId} = req;
+  const response = await prisma.task.create({data:{
+    nome, descricao, status, data, userId
   }})
+  console.log(response )
 
   return NextResponse.json({ msg: response });
 }
+
+

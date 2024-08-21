@@ -4,12 +4,24 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
 }
 
 model User {
   id      String   @id @default(cuid())
   nome    String
-  email   String
+  email   String   @unique
   senha   String
+  tasks   Task[]
+}
+
+
+model Task {
+  id        String   @id @default(cuid())
+  nome      String 
+  descricao String
+  data      String
+  status    String
+  userId    String  
+  user      User     @relation(fields: [userId], references: [id])
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { parseCookies } from "nookies";
 
 interface Task {
-  id: number;
+  id: string;
   nome: string;
   descricao: string;
   data: string;
@@ -18,23 +18,23 @@ export default function GetTask(): JSX.Element {
       try {
         const cookies = parseCookies();
         const id = cookies.token;
-        const response = await fetch(
-          "https://www.neuronavigator.x10.mx/php/index.php",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ id }),
-          }
-        );
-        const tasksData: Task[] = await response.json();
-        setTasks(tasksData);
+        const response = await fetch("http://localhost:3000/api/task/getTask", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro ao buscar tarefas");
+        }
+
+        const res = await response.json();
+        setTasks(res.msg);
       } catch (error) {
         console.error("Erro ao buscar as tarefas:", error);
-        alert(
-          "Erro ao buscar as tarefas. Verifique o console para mais informações."
-        );
+        alert("Erro ao buscar as tarefas. Verifique o console para mais informações.");
       }
     }
 
@@ -44,36 +44,29 @@ export default function GetTask(): JSX.Element {
   const handleStatusChange = async (task: Task, checked: boolean) => {
     const id = task.id;
     const status = checked ? "concluido" : "em progresso";
-    const descricao = task.descricao;
-    const nome = task.nome;
-    const data = task.data;
+    const { descricao, nome, data } = task;
 
     try {
-      const response = await fetch(
-        `https://www.neuronavigator.x10.mx/php/update.php`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ id, status, descricao, nome, data }),
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/task/updateTask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id, status, descricao, nome, data }),
+      });
 
       if (!response.ok) {
         throw new Error("Erro ao atualizar status da tarefa");
       }
 
       const updatedTask = await response.json();
-      const newTasks = tasks.map((t) =>
-        t.id === updatedTask.id ? updatedTask : t
+      setTasks((prevTasks) =>
+        prevTasks.map((t) => (t.id === updatedTask.id ? updatedTask : t))
       );
-      setTasks(newTasks);
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao atualizar status da tarefa:", error);
-      alert(
-        "Erro ao atualizar status da tarefa. Verifique o console para mais informações."
-      );
+      alert("Erro ao atualizar status da tarefa. Verifique o console para mais informações.");
     }
   };
 

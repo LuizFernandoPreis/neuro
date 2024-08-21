@@ -16,20 +16,20 @@ export default function TaskForm(): JSX.Element {
       const data = (document.getElementById("data") as HTMLInputElement).value;
       const status = (document.getElementById("status") as HTMLInputElement)
         .checked
-        ? "Concluido"
-        : "Em progresso";
+        ? "concluido"
+        : "em progresso";
       const cookies = parseCookies();
-      const id = cookies.token;
+      const userId = cookies.token;
 
       try {
         const response = await fetch(
-          "https://www.neuronavigator.x10.mx/php/createTask.php",
+          "http://localhost:3000/api/task",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ id, nome, descricao, data, status }),
+            },  
+            body: JSON.stringify({ userId, nome, descricao, data, status}),
           }
         );
 

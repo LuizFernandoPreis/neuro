@@ -9,7 +9,7 @@ export default function Texts(): JSX.Element {
         const cookies = parseCookies();
         const id = cookies.token;
         const response = await fetch(
-          "https://www.neuronavigator.x10.mx/php/index.php",
+          "http://localhost:3000/api/task/getTask",
           {
             method: "POST",
             headers: {
@@ -18,8 +18,11 @@ export default function Texts(): JSX.Element {
             body: JSON.stringify({ id }),
           }
         );
-        const tasks = await response.json();
+        const res = await response.json();
+        const tasks = res.msg;
 
+        console.log(tasks)
+      
         let doneCount = 0;
         let todoCount = 0;
 

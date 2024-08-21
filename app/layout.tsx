@@ -27,7 +27,7 @@ export default function RootLayout({
 
   return (
     <html lang="pt">
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen justify-center">
         {token ? (
           <>
             <header>
